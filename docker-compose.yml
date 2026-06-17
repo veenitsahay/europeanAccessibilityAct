@@ -1,0 +1,22 @@
+# Postgres for the EAA scan service. Host port 5433 deliberately —
+# avoids clashing with the vulmo dev database already on 5432.
+services:
+  postgres:
+    image: postgres:16
+    container_name: eaascan_postgres
+    environment:
+      POSTGRES_DB: eaascan
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: welcome
+    ports:
+      - "5433:5432"
+    volumes:
+      - eaascan_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d eaascan"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  eaascan_pgdata:

@@ -1,0 +1,16 @@
+{
+  "name": "eaa-scanner",
+  "version": "0.1.0",
+  "description": "Headless WCAG 2.1 AA scanner (Playwright + axe-core) emitting JSON for the EAA scan service",
+  "main": "scan.js",
+  "scripts": {
+    "scan": "node scan.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "playwright": "^1.47.0"
+  }
+}
